@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG exercise 1</title>
+</head>
+<body>
+
+    <div id="graphic">
+
+    </div>
+    <h1></h1>
+    <h2></h2>
+    
+
+    <script>
+
+        let orgColor;
+        let heading = document.querySelector("h1");
+        let jText = document.querySelector("h2");
+
+        document.addEventListener("DOMContentLoaded",loadSvg);
+
+    async function loadSvg() {
+        let svgData = await fetch("layers.svg");
+        let mySvg = await svgData.text(); 
+
+        console.log(mySvg);
+
+        document.querySelector("#graphic").innerHTML = mySvg;
+    }
+
+    document.querySelector("#graphic").addEventListener("click",showElement,showJson);
+
+    function showElement(){
+        heading.textContent = event.target.getAttribute("id");
+
+      //let findId = event.target.getAttribute("id");
+      //let orgColor = document.querySelector("#"+id).getAttribute("fill");
+     // console.log(orgColor);
+
+    };
+
+
+fetch("file.json")
+.then(function(response){
+    return response.json();
+    })
+
+    .then(function(myJson){
+        console.log(myJson);
+    });
+
+
+  // SHOW JSON ELEMENTS 
+
+function showJson(){
+    jText.textContent = event.target.getAttribute();
+
+  //let findId = event.target.getAttribute("id");
+  //let orgColor = document.querySelector("#"+id).getAttribute("fill");
+ // console.log(orgColor);
+
+};
+
+
+
+    //You can use a async function and fetch like this to load your files:
+
+//         async function loadJson() {
+//         // 1. Load svg
+//         //------------------------------------------------------------	
+//         let myJson = await fetch("file.json");
+//         let json = await myJson.text();
+
+// console.log(myJson);
+
+       // jText.innerHTML = json;
+         //}
+        
+
+    
+
+    </script>
+</body>
+</html>
