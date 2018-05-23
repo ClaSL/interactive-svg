@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>circle</title>
+
+<!--    A:Draw a piechart
+
+* make a svg element and draw a piechart with html and css
+* animate the values with css and javascript using stroke-dasharray and stroke-dashoffset
+
+
+###  B:Update data with json
+* make a json file to hold the values for the pieslices
+* load the json file and insert the values
+
+###  c:Update data with json
+* show the values as % on mouseover
+
+-->
+
+    <style>
+    #circle{
+        width:50%;
+        
+    }
+
+    svg{
+        background-color: lightslategray;
+        transform: rotate(-90deg);
+        border-radius:50%;
+    }
+
+/*
+stroke-dasharray:
+defines the size of the slice
+
+stroke-dashoffset:
+moves the slice in the circle
+
+*/
+
+    #c1{
+        fill:none;
+        stroke:#f00;
+        stroke-width: 100;
+        stroke-dasharray: 10 314;
+        transition: all 2s ease;
+
+       
+    }
+
+    #c2{
+        fill:none;
+        stroke:green;
+        stroke-width: 100;
+        stroke-dasharray: 50 314;
+        stroke-dashoffset: -10; /*has to have -10 to move it further down*/
+        transition: all 2s ease;
+    }
+
+    #c3{
+        fill:none;
+        stroke:blue;
+        stroke-width: 100;
+        stroke-dasharray: 60 314;
+        stroke-dashoffset: -60; /*has to have -60 to move it further down (10 +50)*/
+        transition: all 2s ease;
+
+    }
+
+    </style>
+   
+</head>
+<body>
+
+   
+    
+    <div id="circle">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+       
+                <circle id="c1" cx="50" y1="50" cy="50" r="50" />
+                <circle id="c2" cx="50" y1="50" cy="50" r="50" />
+                <circle id="c3" cx="50" y1="50" cy="50" r="50" />
+              
+
+    </div>
+
+    <script>
+
+
+          /* Make the slice C1 move on hover*/
+
+    document.querySelector("#c1").addEventListener("mouseover",animateC1);
+
+function animateC1(){
+    document.querySelector("#c1").style.strokeDashoffset = 30;
+};
+
+/*Make the slice c1 move out again on hover out*/
+
+document.querySelector("#c1").addEventListener("mouseout",animatebackC1);
+    
+    function animatebackC1(){
+        document.querySelector("#c1").style.strokeDashoffset = 0;
+    };
+        
+
+          /* Make the slice C2 move on hover*/
+
+    document.querySelector("#c2").addEventListener("mouseover",animateC2);
+
+function animateC2(){
+    document.querySelector("#c2").style.strokeDashoffset = 10;
+};
+
+/*Make the slice c2 move out again on hover out*/
+
+document.querySelector("#c2").addEventListener("mouseout",animatebackC2);
+    
+    function animatebackC2(){
+        document.querySelector("#c2").style.strokeDashoffset = -10;
+    };
+
+
+
+    /* Make the slice C3 move on hover*/
+
+    document.querySelector("#c3").addEventListener("mouseover",animateC3);
+
+function animateC3(){
+    document.querySelector("#c3").style.strokeDashoffset = 10;
+};
+
+/*Make the slice c3 move out again on hover out*/
+
+document.querySelector("#c3").addEventListener("mouseout",animatebackC3);
+    
+    function animatebackC3(){
+        document.querySelector("#c3").style.strokeDashoffset = -60;
+    };
+    </script>
+</body>
+</html>
+
